@@ -12,7 +12,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh 'npm run deps'
+				sh 'npm install'
             }
         }
         stage('Test') {
