@@ -12,10 +12,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-				sh 'npm run deps' 
-				sh 'gulp test:local'
-				sh 'gulp' 
-				sh 'gulp serve'
 				sh 'npm cache clean -f'
 				sh 'npm install typescript --save-dev'
 				sh 'npm -v'
