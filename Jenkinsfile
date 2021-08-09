@@ -12,6 +12,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+				sh 'npm run deps'
 				sh 'npm cache clean -f'
 				sh 'npm install typescript --save-dev'
 				sh 'npm -v'
