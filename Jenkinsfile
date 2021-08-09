@@ -12,7 +12,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-				sh 'npm start'
 				sh 'npm install typescript --save-dev'
 				sh 'npm -v'
             }
