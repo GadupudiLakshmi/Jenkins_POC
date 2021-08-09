@@ -1,9 +1,7 @@
 
 pipeline {
     agent {
-        docker {
-            image 'poc'
-            args '-p 3000:3000 -p 5000:5000'
+        dockerfile true
         }
     }
     environment {
@@ -12,6 +10,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+				sh 'docker run -dt poc'
+				
+            	args '-p 3000:3000 -p 5000:5000'
 				sh 'npm install'
 				sh 'npm -v'
             }
