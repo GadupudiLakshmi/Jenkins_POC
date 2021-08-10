@@ -1,8 +1,11 @@
 
 pipeline {
     agent {
-        dockerfile true
+        docker {
+			image 'poc'
+            args '-p 3000:3000 -p 5000:5000'
         }
+	}
     
     environment {
         CI = 'true'
@@ -11,9 +14,7 @@ pipeline {
         stage('Build') {
             steps {
 			
-				sh 'docker run -v /var/run/docker.sock:/var/run/docker.sock -dt poc'
 				
-            	args '-p 3000:3000 -p 5000:5000'
 				sh 'npm -v'
             }
         }
