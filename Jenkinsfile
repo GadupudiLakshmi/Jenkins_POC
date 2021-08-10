@@ -10,7 +10,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-				sh 'docker run -dt poc'
+			
+				sh 'docker run -v /var/run/docker.sock:/var/run/docker.sock -dt poc'
 				
             	args '-p 3000:3000 -p 5000:5000'
 				sh 'npm -v'
