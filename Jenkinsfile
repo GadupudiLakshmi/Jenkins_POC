@@ -1,16 +1,15 @@
 
 pipeline {
-    agent any
+    agent{
+		dockerfile true
+		reuseNode true
+        args '-p 3000:3000 -p 5000:5000'
     
     environment {
         CI = 'true'
     }
     stages {
         stage('Build') {
-			agent {
-				dockerfile true
-				reuseNode true
-            	args '-p 3000:3000 -p 5000:5000'
 			}
             steps {
 				sh 'npm install'				
