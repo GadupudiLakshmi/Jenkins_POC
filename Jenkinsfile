@@ -1,20 +1,14 @@
 
 pipeline {
-    agent none
+    agent {
+		dockerfile true
+	}
 
     environment {
         CI = 'true'
     }
     stages {
         stage('Build') {
-			agent {
-			
-				docker {
-					image 'poc'
-					reuseNode true
-        			args '-p 3000:3000 -p 5000:5000'
-				}
-   		 	}
             steps {
 				sh 'npm install --unsafe-perm'
 				sh 'npm -v'
